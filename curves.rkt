@@ -21,8 +21,8 @@
 ;; Problem 4 Part a
 ;;
 ;; Check if a given curve is elliptic
-;; elliptic?: (list b a 0 1) -> Bool
-;; Both b and a are Int
+;; elliptic?: (list Int Int Int Int) -> Bool
+;; consumes a curve polynomial of the form (list b a 0 1)
 (define (elliptic? lst)
   (not (zero? (+ (eval-poly (list 0 0 0 4) (first (rest lst)))
                  (eval-poly (list 0 0 27) (first lst))))))
@@ -36,12 +36,11 @@
 ;; Problem 4 Part b
 ;;
 ;; Produces the list of the polynomial's values at each x-coordinates
-;; curve-values: (listof b a 0 1) (listof x) -> (listof Int) or false
-;; All a, b, and x are integers
+;; curve-values: (listof Int Int Int Int) (listof Int) -> (anyof (listof Int) Bool)
 (define (curve-values curve lst-x)
   (cond [(not (elliptic? curve)) false]
         [(empty? lst-x) empty]
-        [else (cons (eval-poly (list (first curve) (first (rest curve)) 0 1) (first lst-x))
+        [else (cons (eval-poly curve (first lst-x))
                     (curve-values curve (rest lst-x)))]))
 ;; testing
 (check-expect (curve-values (list 7 0 0 1) (list -2 -1 0 1 2))
@@ -54,8 +53,7 @@
 ;; Problem 4 Part c
 ;;
 ;; Produces the list of b that makes valid elliptic curve
-;; usable-b: a (listof b) -> (list of Int)
-;; Both a and b are integers
+;; usable-b: Int (listof Int) -> (listof Int)
 (define (usable-b a list-b)
   (cond [(empty? list-b) empty]
         [(elliptic? (list (first list-b) a 0 1)) (cons (first list-b) (usable-b a (rest list-b)))]

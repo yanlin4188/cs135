@@ -30,9 +30,9 @@
 ;; Predict the counts several days ahead
 ;; after-days: Nat (listof Nat) Nat -> (listof Nat)
 ;; Requires: factor > 0
-(define (after-days factor lst days)
-  (cond [(zero? days) lst]
-        [else (after-days factor (next-day factor lst) (sub1 days))]))
+(define (after-days factor cultures days)
+  (cond [(zero? days) cultures]
+        [else (after-days factor (next-day factor cultures) (sub1 days))]))
 ;; testing
 (check-expect (after-days 2 (list 5 0 12) 2)
               (list 23 3 51))

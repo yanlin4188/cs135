@@ -76,51 +76,40 @@
 ;;
 ;; Problem 5 Part b
 ;;
-(define lst1 (list 7))
-(define lst2 (list 7 3))
-(define lst3 (list 7 3 5))
-(define lst4 (list 7 3 5 2))
-;(sum-k lst1);; 12
-;(sum-k lst2);; 19
-;(sum-k lst3);; 26
-;(sum-k lst4);; 33
-;(sum-c lst1);; 25
-;(sum-c lst2);; 48
-;(sum-c lst3);; 78
-;(sum-c lst4);; 115
-(define karina-steps (list 12 19 26 33))
-(define claire-steps (list 25 48 78 115))
+(define karina-steps (list 11 18 25 32))
+(define claire-steps (list 24 47 77 114))
 
 ;;
 ;; Problem 5 Part c
 ;;
 ;;
 ;; Karina's code:
-;; f(n) = 7n + 5
+;; f(n) = 7n + 4
 ;; Find the number of steps for Karina's functions
 ;; f-karina: Nat -> Nat
 (define (f-karina n)
-  (+ (* 7 n) 5))
+  (+ (* 7 n) 4))
 (define f-karina-list (list (f-karina 1) (f-karina 2) (f-karina 3) (f-karina 4)))
-;; (define karina-steps (list 12 19 26 33))
+;; (define karina-steps (list 11 18 25 32))
 ;;
 ;;
 ;; Claire's code:
-;; f(n) = 7n^2 + 9n + 9
+;; f(n) = 6n^2 + 9n + 9
 ;; Find the number of steps for Claire's functions
 ;; f-claire: Nat -> Nat
 (define (f-claire n)
-  (+ (* 7 (sqr n)) (* 9 n) 9))
+  (+ (* 6 (sqr n)) (* 9 n) 9))
 (define f-claire-list (list (f-claire 1) (f-claire 2) (f-claire 3) (f-claire 4)))
-;;(define claire-steps (list 25 48 78 115))
+;;(define claire-steps (list 24 47 77 114))
+
 ;;
 ;; Problem 5 Part d
 ;;
 ;; Karina:
-;; f(100) = 7 * 100 + 5 = 705
+;; f(100) = 7 * 100 + 4 = 704
 ;;
 ;; Claire:
-;; f(100) = 7 * (100)^2 + 9 * 100 + 9 = 70909
+;; f(100) = 6 * (100)^2 + 9 * 100 + 9 = 60909
 ;;
 ;; Karina's solution is more efficient because her code's linear time complexity if faster than
 ;; Claire's quadratic time complexity.
