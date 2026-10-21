@@ -36,7 +36,7 @@
 ;; Problem 4 Part b
 ;;
 ;; Produces the list of the polynomial's values at each x-coordinates
-;; curve-values: (listof Int Int Int Int) (listof Int) -> (anyof (listof Int) Bool)
+;; curve-values: (list Int Int Int Int) (listof Int) -> (anyof (listof Int) Bool)
 (define (curve-values curve lst-x)
   (cond [(not (elliptic? curve)) false]
         [(empty? lst-x) empty]
@@ -62,6 +62,8 @@
 (check-expect (usable-b 0 (list 0 7 -1)) (list 7 -1))
 (check-expect (usable-b -3 (list 2 0 -2)) (list 0))
 (check-expect (usable-b 5 empty) empty)
+
+
 
 
 
